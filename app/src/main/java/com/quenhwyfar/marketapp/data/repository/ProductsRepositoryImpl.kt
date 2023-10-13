@@ -33,4 +33,8 @@ class ProductsRepositoryImpl @Inject constructor (
     override suspend fun deleteAll() {
         local.delete()
     }
+
+    override suspend fun updateProduct(products: Products) {
+        local.update(productsEntityMapper.fromDomain(products))
+    }
 }

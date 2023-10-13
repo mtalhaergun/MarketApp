@@ -20,5 +20,5 @@ data class ProductsEntity(
     @ColumnInfo(name = "stock")
     val stock: Int? = null,
     @ColumnInfo(name = "count")
-    val count: Int? = null
+    val count: Int = 0
 )

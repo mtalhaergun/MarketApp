@@ -10,5 +10,6 @@ data class Products(
     val imageUrl: String? = null,
     val name: String? = null,
     val price: Double? = null,
-    val stock: Int? = null
+    val stock: Int? = null,
+    val count: Int = 0
 ) : Parcelable

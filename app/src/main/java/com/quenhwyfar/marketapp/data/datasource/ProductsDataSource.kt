@@ -14,5 +14,6 @@ interface ProductsDataSource {
         fun getProducts() : Flow<List<ProductsEntity>>
         suspend fun addToCart(product : ProductsEntity)
         suspend fun delete()
+        suspend fun update(product: ProductsEntity?)
     }
 }

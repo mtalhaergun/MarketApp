@@ -12,7 +12,8 @@ class ProductsEntityMapper : EntityMapper<ProductsEntity, Products> {
             imageUrl = entity.imageUrl,
             name = entity.name,
             price = entity.price,
-            stock = entity.stock
+            stock = entity.stock,
+            count = entity.count
         )
     }
 
@@ -23,7 +24,8 @@ class ProductsEntityMapper : EntityMapper<ProductsEntity, Products> {
                 imageUrl = domain.imageUrl,
                 name = domain.name,
                 price = domain.price,
-                stock = domain.stock
+                stock = domain.stock,
+                count = domain.count
             )
     }
 

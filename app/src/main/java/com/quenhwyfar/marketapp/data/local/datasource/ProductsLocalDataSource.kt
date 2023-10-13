@@ -20,4 +20,8 @@ class ProductsLocalDataSource @Inject constructor (
     override suspend fun delete() {
         productsDao.deleteAll()
     }
+
+    override suspend fun update(product: ProductsEntity?) {
+        productsDao.update(product)
+    }
 }

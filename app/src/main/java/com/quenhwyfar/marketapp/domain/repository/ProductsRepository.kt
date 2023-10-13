@@ -10,5 +10,6 @@ interface ProductsRepository {
     fun getLocalProducts() : Flow<List<Products>>
     suspend fun addToCart(products: Products)
     suspend fun deleteAll()
+    suspend fun updateProduct(products : Products)
 
 }

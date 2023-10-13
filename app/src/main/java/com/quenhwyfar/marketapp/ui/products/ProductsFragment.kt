@@ -46,16 +46,17 @@ class ProductsFragment : Fragment() {
 
     private fun setupRecyclerView(){
         productAdapter = ProductAdapter(object : ProductsClickListener{
-            override fun onPlusClick(products: Products, count: Int) {
-
+            override fun onPlusClick() {
+                viewModel.productCount++
             }
 
-            override fun onMinusClick(products: Products, count: Int) {
-
+            override fun onMinusClick() {
+                viewModel.productCount--
             }
 
         })
         binding.rvProducts.adapter = productAdapter
+        productAdapter.getDao(viewModel.getProductsDao())
     }
 
     private fun collectProducts() = with(binding){
