@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.quenhwyfar.marketapp.databinding.ItemProductBinding
 import com.quenhwyfar.marketapp.domain.uimodel.Products
 
-class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductVH>() {
+class ProductAdapter(
+    private val productsClickListener: ProductsClickListener
+) : RecyclerView.Adapter<ProductAdapter.ProductVH>() {
 
     private val diffUtil = object : DiffUtil.ItemCallback<Products>(){
         override fun areItemsTheSame(oldItem: Products, newItem: Products): Boolean {
@@ -26,16 +28,26 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductVH>() {
         get() = diffList.currentList
         set(value) = diffList.submitList(value)
 
-    class ProductVH(private val binding : ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ProductVH(
+        private val binding : ItemProductBinding,
+        private val productsClickListener: ProductsClickListener
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(product : Products){
             binding.product = product
             binding.executePendingBindings()
+
+            binding.buttonPlus.setOnClickListener {
+                productsClickListener.onPlusClick(product,binding.buttonCount.text.toString().toInt())
+            }
+            binding.buttonMinus.setOnClickListener {
+                productsClickListener.onMinusClick(product,binding.buttonCount.text.toString().toInt())
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductVH {
         val binding = ItemProductBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return ProductVH(binding)
+        return ProductVH(binding,productsClickListener)
     }
 
     override fun onBindViewHolder(holder: ProductVH, position: Int) {

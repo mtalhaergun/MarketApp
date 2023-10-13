@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.quenhwyfar.marketapp.R
 import com.quenhwyfar.marketapp.databinding.FragmentProductsBinding
+import com.quenhwyfar.marketapp.domain.uimodel.Products
 import com.quenhwyfar.marketapp.ui.products.adapter.ProductAdapter
+import com.quenhwyfar.marketapp.ui.products.adapter.ProductsClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -43,7 +45,16 @@ class ProductsFragment : Fragment() {
     }
 
     private fun setupRecyclerView(){
-        productAdapter = ProductAdapter()
+        productAdapter = ProductAdapter(object : ProductsClickListener{
+            override fun onPlusClick(products: Products, count: Int) {
+
+            }
+
+            override fun onMinusClick(products: Products, count: Int) {
+
+            }
+
+        })
         binding.rvProducts.adapter = productAdapter
     }
 
