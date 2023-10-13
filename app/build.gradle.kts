@@ -85,4 +85,9 @@ dependencies {
     implementation("com.orhanobut:logger:2.2.0")
     implementation("com.github.bumptech.glide:glide:4.15.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.0")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.room:room-ktx:2.5.0")
+    implementation("androidx.room:room-runtime:2.5.0")
+    kapt("androidx.room:room-compiler:2.5.0")
+
 }

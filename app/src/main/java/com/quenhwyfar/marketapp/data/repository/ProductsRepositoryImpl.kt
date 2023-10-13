@@ -7,7 +7,7 @@ import com.quenhwyfar.marketapp.domain.uimodel.Products
 import javax.inject.Inject
 
 class ProductsRepositoryImpl @Inject constructor (
-    private val remote : ProductsDataSource,
+    private val remote : ProductsDataSource.Remote,
     private val productsDtoMapper : ProductsDtoMapper
 ) : ProductsRepository {
     override suspend fun getProducts(): List<Products> {

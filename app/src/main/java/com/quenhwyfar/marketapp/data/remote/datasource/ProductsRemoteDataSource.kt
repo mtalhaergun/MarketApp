@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class ProductsRemoteDataSource @Inject constructor (
     private val productService : ProductService
-) : ProductsDataSource {
+) : ProductsDataSource.Remote {
     override suspend fun fetchProducts(): List<ProductsDto> {
         return productService.fetchProducts()
     }

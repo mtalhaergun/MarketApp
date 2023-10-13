@@ -11,5 +11,5 @@ import dagger.hilt.components.SingletonComponent
 abstract class DataSourceModule {
 
     @Binds
-    abstract fun bindProductsRemoteDataSource(productsRemoteDataSource: ProductsRemoteDataSource): ProductsDataSource
+    abstract fun bindProductsRemoteDataSource(productsRemoteDataSource: ProductsRemoteDataSource): ProductsDataSource.Remote
 }
