@@ -27,8 +27,6 @@ class ProductsViewModel @Inject constructor (
     private val _productsUiState = MutableStateFlow(ProductsUiState())
     val productsUiState : StateFlow<ProductsUiState> = _productsUiState.asStateFlow()
 
-    var productCount = 0
-
     fun getProducts() = viewModelScope.launch {
         getProductsUseCase.invoke().collect() {response ->
             when(response){

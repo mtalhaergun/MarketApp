@@ -47,11 +47,11 @@ class ProductsFragment : Fragment() {
     private fun setupRecyclerView(){
         productAdapter = ProductAdapter(object : ProductsClickListener{
             override fun onPlusClick() {
-                viewModel.productCount++
+
             }
 
             override fun onMinusClick() {
-                viewModel.productCount--
+
             }
 
         })

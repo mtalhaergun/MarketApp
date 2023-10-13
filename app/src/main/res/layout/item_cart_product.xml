@@ -11,12 +11,8 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="120dp"
-        android:layout_height="230dp"
-        app:cardCornerRadius="16dp"
-        app:strokeWidth="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp">
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -25,78 +21,75 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/product_image"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:loadImage="@{product.imageUrl}"
                 android:scaleType="fitXY"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/product_name"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginTop="32dp"
                 android:text="@{product.name}"
                 android:textColor="@color/black"
                 android:textSize="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/product_image" />
+                app:layout_constraintStart_toEndOf="@+id/product_image"
+                app:layout_constraintTop_toTopOf="@+id/product_image" />
 
             <TextView
                 android:id="@+id/product_price"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="32dp"
                 android:text="@{product.currency + String.valueOf(product.price)}"
                 android:textColor="@color/black"
                 android:textSize="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/product_name" />
+                app:layout_constraintBottom_toBottomOf="@+id/product_image"
+                app:layout_constraintStart_toStartOf="@+id/product_name" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/layout_buttons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/product_image"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/product_image">
 
                 <TextView
                     android:id="@+id/button_minus"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="#BFBFBF"
                     android:text="-"
-                    android:textSize="20dp"
                     android:textAlignment="center"
-                    android:visibility="gone"
-                    android:background="#BFBFBF"/>
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/button_count"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="#A0E6D8"
                     android:text="1"
-                    android:textSize="20dp"
                     android:textAlignment="center"
-                    android:visibility="gone"
-                    android:background="#A0E6D8"/>
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/button_plus"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="#BFBFBF"
                     android:text="+"
-                    android:textSize="20dp"
                     android:textAlignment="center"
-                    android:background="#BFBFBF"/>
+                    android:textSize="20dp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
