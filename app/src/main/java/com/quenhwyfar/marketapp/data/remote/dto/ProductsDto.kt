@@ -6,15 +6,15 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class ProductsDto(
     @Json(name = "currency")
-    val currency: String,
+    val currency: String? = null,
     @Json(name = "id")
-    val id: String,
+    val id: String? = null,
     @Json(name = "imageUrl")
-    val imageUrl: String,
+    val imageUrl: String? = null,
     @Json(name = "name")
-    val name: String,
+    val name: String? = null,
     @Json(name = "price")
-    val price: Double,
+    val price: Double? = null,
     @Json(name = "stock")
-    val stock: Int
+    val stock: Int? = null
 )

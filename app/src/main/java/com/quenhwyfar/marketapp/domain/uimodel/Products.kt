@@ -5,10 +5,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Products(
-    val currency: String,
-    val id: String,
-    val imageUrl: String,
-    val name: String,
-    val price: Double,
-    val stock: Int
+    val currency: String? = null,
+    val id: String? = null,
+    val imageUrl: String? = null,
+    val name: String? = null,
+    val price: Double? = null,
+    val stock: Int? = null
 ) : Parcelable
