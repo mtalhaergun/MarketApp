@@ -5,15 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.quenhwyfar.marketapp.R
 import com.quenhwyfar.marketapp.databinding.FragmentProductsBinding
+import com.quenhwyfar.marketapp.ui.products.adapter.ProductAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ProductsFragment : Fragment() {
 
     private var _binding : FragmentProductsBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel : ProductsViewModel by viewModels()
+
+    private lateinit var productAdapter: ProductAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +38,29 @@ class ProductsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+        collectProducts()
+    }
 
+    private fun setupRecyclerView(){
+        productAdapter = ProductAdapter()
+        binding.rvProducts.adapter = productAdapter
+    }
+
+    private fun collectProducts() = with(binding){
+        viewModel.getProducts()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.productsUiState.collect{uiState ->
+                uiState.products?.let {products ->
+                    productAdapter.products = products
+                }
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
