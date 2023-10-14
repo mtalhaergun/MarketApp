@@ -1,5 +1,6 @@
 package com.quenhwyfar.marketapp.ui.cart
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -41,6 +42,7 @@ class CartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         collectProducts()
+        listener()
     }
 
     private fun setupRecyclerView(){
@@ -62,19 +64,41 @@ class CartFragment : Fragment() {
         viewModel.getProducts()
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.productsUiState.collect{uiState ->
-                uiState.products?.let {flow ->
-                    flow.collect{list ->
+                uiState.products.let {flow ->
+                    flow?.collect{ list ->
                         var totalPrice = 0.0
                         cartAdapter.products = list
                         list.forEach { product ->
                             totalPrice += product.count * product.price!!
                         }
-                        binding.totalPrice.text = list[0].currency + String.format("%.2f",totalPrice)
+                        if(list.isEmpty()) binding.totalPrice.text = "0"
+                        else binding.totalPrice.text = list[0].currency + String.format("%.2f",totalPrice)
                     }
 
                 }
             }
         }
+    }
+
+    private fun listener(){
+        binding.textViewSil.setOnClickListener {
+            showConfirmationDialog()
+        }
+    }
+
+    private fun showConfirmationDialog() {
+        val alertDialog = AlertDialog.Builder(requireContext())
+        alertDialog.setTitle("Sepeti Boşalt")
+        alertDialog.setMessage("Tüm ürünler sepetten silinecek, emin misiniz?")
+
+        alertDialog.setNegativeButton("Hayır") { _, _ ->
+
+        }
+
+        alertDialog.setPositiveButton("Evet") { _, _ ->
+            viewModel.deleteAllProducts()
+        }
+        alertDialog.show()
     }
 
     override fun onDestroyView() {

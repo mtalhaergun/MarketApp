@@ -32,8 +32,8 @@ class ProductsViewModel @Inject constructor (
     private val _productsUiState = MutableStateFlow(ProductsUiState())
     val productsUiState : StateFlow<ProductsUiState> = _productsUiState.asStateFlow()
 
-    private val _totalCount = MutableLiveData<Int>()
-    val totalCount: LiveData<Int>
+    private val _totalCount = MutableLiveData<Int?>()
+    val totalCount: LiveData<Int?>
         get() = _totalCount
 
     fun getProducts() = viewModelScope.launch {
@@ -48,7 +48,11 @@ class ProductsViewModel @Inject constructor (
 
     fun updateTotalCount() = viewModelScope.launch {
         val result = getTotalCountUseCase()
-        _totalCount.value = result
+        if (result != null) {
+            _totalCount.value = result
+        } else {
+            _totalCount.value = 0
+        }
     }
 
     fun getProductsDao() : ProductsDao{
