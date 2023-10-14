@@ -1,7 +1,9 @@
 package com.quenhwyfar.marketapp.data.repository
 
-import androidx.lifecycle.LiveData
 import com.quenhwyfar.marketapp.data.datasource.ProductsDataSource
+import com.quenhwyfar.marketapp.data.remote.dto.OrderResponse
+import com.quenhwyfar.marketapp.data.remote.dto.PostList
+import com.quenhwyfar.marketapp.data.remote.dto.PostProducts
 import com.quenhwyfar.marketapp.domain.mapper.ProductsDtoMapper
 import com.quenhwyfar.marketapp.domain.mapper.ProductsEntityMapper
 import com.quenhwyfar.marketapp.domain.repository.ProductsRepository
@@ -41,5 +43,9 @@ class ProductsRepositoryImpl @Inject constructor (
 
     override suspend fun getTotalCount(): Int {
         return local.getTotalCount()
+    }
+
+    override suspend fun postProducts(PostProducts : PostList): OrderResponse {
+        return remote.postProducts(PostProducts)
     }
 }

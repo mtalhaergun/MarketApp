@@ -1,6 +1,8 @@
 package com.quenhwyfar.marketapp.domain.repository
 
-import androidx.lifecycle.LiveData
+import com.quenhwyfar.marketapp.data.remote.dto.OrderResponse
+import com.quenhwyfar.marketapp.data.remote.dto.PostList
+import com.quenhwyfar.marketapp.data.remote.dto.PostProducts
 import com.quenhwyfar.marketapp.domain.uimodel.Products
 import kotlinx.coroutines.flow.Flow
 
@@ -13,5 +15,6 @@ interface ProductsRepository {
     suspend fun deleteAll()
     suspend fun updateProduct(products : Products)
     suspend fun getTotalCount() : Int
+    suspend fun postProducts(PostProducts : PostList) : OrderResponse
 
 }
