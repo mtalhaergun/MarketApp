@@ -24,4 +24,8 @@ class ProductsLocalDataSource @Inject constructor (
     override suspend fun update(product: ProductsEntity?) {
         productsDao.update(product)
     }
+
+    override suspend fun getTotalCount(): Int {
+        return productsDao.getTotalCount()
+    }
 }

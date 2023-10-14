@@ -1,5 +1,6 @@
 package com.quenhwyfar.marketapp.data.repository
 
+import androidx.lifecycle.LiveData
 import com.quenhwyfar.marketapp.data.datasource.ProductsDataSource
 import com.quenhwyfar.marketapp.domain.mapper.ProductsDtoMapper
 import com.quenhwyfar.marketapp.domain.mapper.ProductsEntityMapper
@@ -36,5 +37,9 @@ class ProductsRepositoryImpl @Inject constructor (
 
     override suspend fun updateProduct(products: Products) {
         local.update(productsEntityMapper.fromDomain(products))
+    }
+
+    override suspend fun getTotalCount(): Int {
+        return local.getTotalCount()
     }
 }

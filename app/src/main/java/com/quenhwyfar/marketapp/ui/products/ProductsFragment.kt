@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.quenhwyfar.marketapp.R
@@ -43,17 +44,18 @@ class ProductsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         collectProducts()
+        observe()
         listeners()
     }
 
     private fun setupRecyclerView(){
         productAdapter = ProductAdapter(object : ProductsClickListener{
             override fun onPlusClick() {
-
+                viewModel.updateTotalCount()
             }
 
             override fun onMinusClick() {
-
+                viewModel.updateTotalCount()
             }
 
         })
@@ -63,6 +65,7 @@ class ProductsFragment : Fragment() {
 
     private fun collectProducts() = with(binding){
         viewModel.getProducts()
+        viewModel.updateTotalCount()
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.productsUiState.collect{uiState ->
                 uiState.products?.let {products ->
@@ -70,6 +73,12 @@ class ProductsFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun observe(){
+        viewModel.totalCount.observe(viewLifecycleOwner, Observer {
+            binding.productCount.text = it.toString()
+        })
     }
 
     private fun listeners(){

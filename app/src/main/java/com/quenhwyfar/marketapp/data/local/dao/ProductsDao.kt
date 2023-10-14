@@ -1,5 +1,6 @@
 package com.quenhwyfar.marketapp.data.local.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -31,5 +32,8 @@ interface ProductsDao {
 
     @Query("SELECT count FROM products WHERE name = :name LIMIT 1")
     suspend fun searchCount(name: String): Int
+
+    @Query("SELECT SUM(count) FROM products")
+    suspend fun getTotalCount() : Int
 
 }
