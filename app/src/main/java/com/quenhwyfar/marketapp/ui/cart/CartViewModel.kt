@@ -3,6 +3,7 @@ package com.quenhwyfar.marketapp.ui.cart
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.quenhwyfar.marketapp.core.NetworkResult
+import com.quenhwyfar.marketapp.data.local.dao.ProductsDao
 import com.quenhwyfar.marketapp.domain.usecase.GetDatabaseProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CartViewModel @Inject constructor(
-    private val getDatabaseProductsUseCase: GetDatabaseProductsUseCase
+    private val getDatabaseProductsUseCase: GetDatabaseProductsUseCase,
+    private val productsDao: ProductsDao
 ) : ViewModel() {
 
     private val _productsUiState = MutableStateFlow(CartUiState())
@@ -30,4 +32,7 @@ class CartViewModel @Inject constructor(
         }
     }
 
+    fun getProductsDao() : ProductsDao{
+        return productsDao
+    }
 }

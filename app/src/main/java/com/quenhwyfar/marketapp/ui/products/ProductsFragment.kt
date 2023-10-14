@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import com.quenhwyfar.marketapp.R
 import com.quenhwyfar.marketapp.databinding.FragmentProductsBinding
 import com.quenhwyfar.marketapp.domain.uimodel.Products
@@ -42,6 +43,7 @@ class ProductsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         collectProducts()
+        listeners()
     }
 
     private fun setupRecyclerView(){
@@ -67,6 +69,13 @@ class ProductsFragment : Fragment() {
                     productAdapter.products = products
                 }
             }
+        }
+    }
+
+    private fun listeners(){
+        binding.cart.setOnClickListener {
+            val navigation = ProductsFragmentDirections.actionProductsFragment2ToCartFragment()
+            Navigation.findNavController(it).navigate(navigation)
         }
     }
 

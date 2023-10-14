@@ -8,5 +8,14 @@
         android:id="@+id/productsFragment2"
         android:name="com.quenhwyfar.marketapp.ui.products.ProductsFragment"
         android:label="fragment_products"
-        tools:layout="@layout/fragment_products" />
+        tools:layout="@layout/fragment_products" >
+        <action
+            android:id="@+id/action_productsFragment2_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.quenhwyfar.marketapp.ui.cart.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
 </navigation>
