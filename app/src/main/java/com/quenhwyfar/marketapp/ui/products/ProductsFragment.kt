@@ -16,6 +16,8 @@ import com.quenhwyfar.marketapp.databinding.FragmentProductsBinding
 import com.quenhwyfar.marketapp.domain.uimodel.Products
 import com.quenhwyfar.marketapp.ui.products.adapter.ProductAdapter
 import com.quenhwyfar.marketapp.ui.products.adapter.ProductsClickListener
+import com.quenhwyfar.marketapp.utils.extensions.gone
+import com.quenhwyfar.marketapp.utils.extensions.visible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -72,7 +74,27 @@ class ProductsFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.productsUiState.collect{uiState ->
                 uiState.products?.let {products ->
+                    progressBar.gone()
+                    errorText.gone()
                     productAdapter.products = products
+                    rvProducts.visible()
+                }
+                if (uiState.loading && uiState.products.isNullOrEmpty()) {
+                    progressBar.visible()
+                    errorText.gone()
+                    rvProducts.gone()
+                } else {
+                    progressBar.gone()
+                    uiState.error?.let {
+                        errorText.text = it
+                    } ?: run {
+                        errorText.gone()
+                    }
+                    if (uiState.products.isNullOrEmpty()) {
+                        rvProducts.gone()
+                    } else {
+                        rvProducts.visible()
+                    }
                 }
             }
         }
