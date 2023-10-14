@@ -2,6 +2,8 @@
 Applogist Case
 </h1>
 
+An application where products can be added or removed from the cart and the selected products can be purchased.
+
 ### Screenshots
 
 | Products Screen | Products Added | Cart Screen |
