@@ -63,8 +63,13 @@ class CartFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.productsUiState.collect{uiState ->
                 uiState.products?.let {flow ->
-                    flow.collect{
-                        cartAdapter.products = it
+                    flow.collect{list ->
+                        var totalPrice = 0.0
+                        cartAdapter.products = list
+                        list.forEach { product ->
+                            totalPrice += product.count * product.price!!
+                        }
+                        binding.totalPrice.text = list[0].currency + String.format("%.2f",totalPrice)
                     }
 
                 }

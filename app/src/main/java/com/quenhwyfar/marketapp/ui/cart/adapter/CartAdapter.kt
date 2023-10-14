@@ -47,6 +47,7 @@ class CartAdapter(
                     binding.buttonCount.visibility = View.VISIBLE
                     binding.buttonMinus.visibility = View.VISIBLE
                     binding.buttonCount.text = productCount.toString()
+                    binding.productPrice.text = product.currency + (productCount * product.price!!).toString()
                 }else{
                     binding.buttonCount.visibility = View.GONE
                     binding.buttonMinus.visibility = View.GONE
@@ -73,6 +74,7 @@ class CartAdapter(
                             binding.buttonCount.visibility = View.VISIBLE
                             binding.buttonMinus.visibility = View.VISIBLE
                             binding.buttonCount.text = (productCount+1).toString()
+                            binding.productPrice.text = product.currency + (productCount * product.price!!).toString()
                         }
                     }else{
                         productsDao.insert(
@@ -90,6 +92,7 @@ class CartAdapter(
                         binding.buttonCount.visibility = View.VISIBLE
                         binding.buttonMinus.visibility = View.VISIBLE
                         binding.buttonCount.text = "1"
+                        binding.productPrice.text = product.currency + product.price.toString()
                     }
                 }
 
@@ -114,6 +117,7 @@ class CartAdapter(
                             binding.buttonCount.visibility = View.VISIBLE
                             binding.buttonMinus.visibility = View.VISIBLE
                             binding.buttonCount.text = (productCount-1).toString()
+                            binding.productPrice.text = product.currency + (productCount * product.price!!).toString()
                         }else{
                             productsDao.delete(
                                 ProductsEntity(
@@ -130,6 +134,7 @@ class CartAdapter(
                             binding.buttonCount.visibility = View.GONE
                             binding.buttonMinus.visibility = View.GONE
                             binding.buttonCount.text = (productCount-1).toString()
+                            binding.productPrice.text = product.currency + product.price.toString()
                         }
                     }
                 }

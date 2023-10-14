@@ -37,10 +37,11 @@
                 android:id="@+id/product_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
                 android:text="@{product.name}"
                 android:textColor="@color/black"
-                android:textSize="12dp"
+                android:textSize="20dp"
                 app:layout_constraintStart_toEndOf="@+id/product_image"
                 app:layout_constraintTop_toTopOf="@+id/product_image" />
 
@@ -48,12 +49,13 @@
                 android:id="@+id/product_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="24dp"
                 android:text="@{product.currency + String.valueOf(product.price)}"
                 android:textColor="@color/black"
-                android:textSize="12dp"
+                android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/product_image"
-                app:layout_constraintStart_toStartOf="@+id/product_name" />
+                app:layout_constraintStart_toEndOf="@+id/product_image" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/layout_buttons"
@@ -66,8 +68,8 @@
 
                 <TextView
                     android:id="@+id/button_minus"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:background="#BFBFBF"
                     android:text="-"
                     android:textAlignment="center"
@@ -75,8 +77,8 @@
 
                 <TextView
                     android:id="@+id/button_count"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:background="#A0E6D8"
                     android:text="1"
                     android:textAlignment="center"
@@ -84,8 +86,8 @@
 
                 <TextView
                     android:id="@+id/button_plus"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:background="#BFBFBF"
                     android:text="+"
                     android:textAlignment="center"
