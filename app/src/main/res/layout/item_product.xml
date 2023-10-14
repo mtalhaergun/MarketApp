@@ -58,7 +58,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:text="@{product.currency + String.valueOf(product.price)}"
-                android:textColor="#12B0C5"
+                android:textColor="@color/price_color"
                 android:textSize="15dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +80,7 @@
                     android:textSize="20dp"
                     android:textAlignment="center"
                     android:visibility="gone"
-                    android:background="#BFBFBF"/>
+                    android:background="@color/count_button_color"/>
 
                 <TextView
                     android:id="@+id/button_count"
@@ -90,7 +90,7 @@
                     android:textSize="20dp"
                     android:textAlignment="center"
                     android:visibility="gone"
-                    android:background="#A0E6D8"/>
+                    android:background="@color/bottom_bar_color"/>
 
                 <TextView
                     android:id="@+id/button_plus"
@@ -99,7 +99,7 @@
                     android:text="+"
                     android:textSize="20dp"
                     android:textAlignment="center"
-                    android:background="#BFBFBF"/>
+                    android:background="@color/count_button_color"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

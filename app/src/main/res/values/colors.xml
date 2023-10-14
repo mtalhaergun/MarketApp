@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="app_background_color">#F8F1F1</color>
+    <color name="toolbar_color">#E8E4E4</color>
+    <color name="delete_text_color">#EF0000</color>
+    <color name="close_text_color">#0086AF</color>
+    <color name="bottom_bar_color">#A0E6D8</color>
+    <color name="button_color">#0086AF</color>
+    <color name="cart_logo_count_color">#FF0000</color>
+    <color name="price_color">#12B0C5</color>
+    <color name="count_button_color">#BFBFBF</color>
 </resources>

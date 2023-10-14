@@ -12,7 +12,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="@dimen/cart_product_item_height"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="8dp">
 
@@ -29,7 +29,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:loadImage="@{product.imageUrl}"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -43,7 +43,7 @@
                 android:layout_marginTop="24dp"
                 android:text="@{product.name}"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="@dimen/cart_product_text_size"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/product_image"
                 app:layout_constraintTop_toTopOf="@+id/product_image" />
@@ -55,8 +55,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="24dp"
                 android:text="@{product.currency + String.valueOf(product.price)}"
-                android:textColor="#12B0C5"
-                android:textSize="20dp"
+                android:textColor="@color/price_color"
+                android:textSize="@dimen/cart_product_text_size"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/product_image"
                 app:layout_constraintStart_toEndOf="@+id/product_image" />
@@ -72,30 +72,30 @@
 
                 <TextView
                     android:id="@+id/button_minus"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:background="#BFBFBF"
+                    android:layout_width="@dimen/counter_button_size"
+                    android:layout_height="@dimen/counter_button_size"
+                    android:background="@color/count_button_color"
                     android:text="-"
                     android:textAlignment="center"
-                    android:textSize="20dp" />
+                    android:textSize="@dimen/counter_button_text_size" />
 
                 <TextView
                     android:id="@+id/button_count"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:background="#A0E6D8"
+                    android:layout_width="@dimen/counter_button_size"
+                    android:layout_height="@dimen/counter_button_size"
+                    android:background="@color/bottom_bar_color"
                     android:text="1"
                     android:textAlignment="center"
-                    android:textSize="20dp" />
+                    android:textSize="@dimen/counter_button_text_size" />
 
                 <TextView
                     android:id="@+id/button_plus"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:background="#BFBFBF"
+                    android:layout_width="@dimen/counter_button_size"
+                    android:layout_height="@dimen/counter_button_size"
+                    android:background="@color/count_button_color"
                     android:text="+"
                     android:textAlignment="center"
-                    android:textSize="20dp" />
+                    android:textSize="@dimen/counter_button_text_size" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
